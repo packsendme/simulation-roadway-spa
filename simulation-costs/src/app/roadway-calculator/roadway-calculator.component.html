@@ -1,0 +1,281 @@
+<div class="container">
+	<div class="get-simulation">
+		<h3 class="text-center">Simulacao Custo Delivey - Terrestre</h3>
+		<div class="row box-cadastro">
+			<div class="col-12">
+					<form class="mt-15" id="add-form" (ngSubmit)="f.form.valid && findSimulationRoadway(f)" #f="ngForm" novalidate>
+
+						<mat-form-field class="mat-input-wrapper">
+							<input matInput type="text" name="address_origin" placeholder="Endereco Origem Produto" [(ngModel)]="simulation.address_origin" required>
+						</mat-form-field>
+						
+						<mat-form-field class="mat-input-wrapper">
+							<input matInput type="text" name="address_destionation" placeholder="Endereco Destion Produto" [(ngModel)]="simulation.address_destination" required>
+						</mat-form-field>
+						
+						<mat-form-field class="mat-input-wrapper">
+						<mat-label>Tipo de Produto</mat-label>
+						<mat-select name="produto" [(ngModel)]="selected_typeproduct" required>
+							<mat-option *ngFor="let produto of produtos" [value]="produto.value">
+								{{produto.viewValue}}
+							</mat-option>
+						</mat-select>
+						</mat-form-field>
+
+						<div layout="row" layout-align="start" flex>
+							<mat-form-field class="peso-input"> 
+								<input matInput name="weight_product" placeholder="Peso Produto" [(ngModel)]="simulation.weight_product" required>
+							</mat-form-field>
+
+							<mat-form-field class="unidade-medida-input">
+								<mat-label>Unidade Medida</mat-label>
+								<mat-select name="measurement" [(ngModel)]="unity_measurement" required>
+									<mat-option value="GR">Grama/Gr</mat-option>
+									<mat-option value="KG">Kilograma/KG</mat-option>
+									<mat-option value="T">Tonelada/T</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+
+						<mat-form-field class="mat-input-wrapper">
+							<mat-label>Tipo Delivery</mat-label>
+							<mat-select name="type_delivery" [(ngModel)]="simulation.type_delivery" required>
+								<mat-option value="1">Imediata    - 1h</mat-option>
+								<mat-option value="8">Express     - 8h</mat-option>
+								<mat-option value="12">Rapida     - 12h</mat-option>
+								<mat-option value="24">Regular    - 24h</mat-option>
+								<mat-option value="72">Prolongada - 72h</mat-option>
+								<mat-option value="Programada">Programada</mat-option>
+							</mat-select>    				
+						</mat-form-field>
+
+						<button type="submit" class="btn btn-cadastro btn-lg">Simular Terrestre</button>
+					</form>
+				</div>
+		</div>
+	</div>
+
+	<div class="result-simulation">
+		<mat-grid-list cols="2" rowHeight="6:4">
+  			<mat-grid-tile>
+      			<img class="tile-image" src="../../assets/img/icon-car.png">
+			  </mat-grid-tile>
+		</mat-grid-list>
+		
+		<mat-table [dataSource]="carDS" class="mat-elevation-z8">
+
+			<ng-container matColumnDef="transportador">
+				<mat-header-cell *matHeaderCellDef> Transportador </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.transportador}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="delivery">
+				<mat-header-cell *matHeaderCellDef> Delivery </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.delivery}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="reshipping">
+				<mat-header-cell *matHeaderCellDef> Reshipping </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.reshipping}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="packsend">
+				<mat-header-cell *matHeaderCellDef> Packsend </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.packsend}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="total">
+				<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+			</ng-container>
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+		<br>
+		<!-- TRUCK -->
+		<mat-grid-list cols="2" rowHeight="6:4">
+  			<mat-grid-tile>
+      			<img class="tile-image" src="../../assets/img/icon-truck.png">
+			  </mat-grid-tile>
+		</mat-grid-list>
+
+		<mat-table [dataSource]="truckDS" class="mat-elevation-z8">
+ 
+			<ng-container matColumnDef="transporte">
+				<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.transporte}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="transportador">
+				<mat-header-cell mat-header-cell *matHeaderCellDef> Transportador </mat-header-cell>
+				<mat-cell mat-cell *matCellDef="let element"> {{element.transportador}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="delivery">
+				<mat-header-cell *matHeaderCellDef> Delivery </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.delivery}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="reshipping">
+				<mat-header-cell *matHeaderCellDef> Reshipping </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.reshipping}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="packsend">
+				<mat-header-cell *matHeaderCellDef> Packsend </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.packsend}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="total">
+				<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+			</ng-container>
+ 
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+		<br>
+		<!-- MOTOCYCLE -->
+		<mat-grid-list cols="2" rowHeight="6:4">
+  			<mat-grid-tile>
+      			<img class="tile-image" src="../../assets/img/icon-motorcycle.png">
+			  </mat-grid-tile>
+		</mat-grid-list>
+
+		<mat-table [dataSource]="motocycleDS" class="mat-elevation-z8">
+ 
+			<ng-container matColumnDef="transporte">
+				<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.transporte}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="transportador">
+				<mat-header-cell mat-header-cell *matHeaderCellDef> Transportador </mat-header-cell>
+				<mat-cell mat-cell *matCellDef="let element"> {{element.transportador}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="delivery">
+				<mat-header-cell *matHeaderCellDef> Delivery </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.delivery}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="reshipping">
+				<mat-header-cell *matHeaderCellDef> Reshipping </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.reshipping}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="packsend">
+				<mat-header-cell *matHeaderCellDef> Packsend </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.packsend}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="total">
+				<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+			</ng-container>
+ 
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+		<br>
+		<!-- BICYCLE -->
+		<mat-grid-list cols="2" rowHeight="6:4">
+  			<mat-grid-tile>
+      			<img class="tile-image" src="../../assets/img/icon-bicycle.png">
+			  </mat-grid-tile>
+		</mat-grid-list>
+
+		<mat-table [dataSource]="bicycleDS" class="mat-elevation-z8">
+ 
+			<ng-container matColumnDef="transporte">
+				<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.transporte}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="transportador">
+				<mat-header-cell mat-header-cell *matHeaderCellDef> Transportador </mat-header-cell>
+				<mat-cell mat-cell *matCellDef="let element"> {{element.transportador}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="delivery">
+				<mat-header-cell *matHeaderCellDef> Delivery </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.delivery}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="reshipping">
+				<mat-header-cell *matHeaderCellDef> Reshipping </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.reshipping}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="packsend">
+				<mat-header-cell *matHeaderCellDef> Packsend </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.packsend}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="total">
+				<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+			</ng-container>
+ 
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+		
+		<br>
+		<!-- WALKING -->
+		<mat-grid-list cols="2" rowHeight="6:4">
+  			<mat-grid-tile>
+      			<img class="tile-image" src="../../assets/img/icon-walking.png">
+			  </mat-grid-tile>
+		</mat-grid-list>
+
+		<mat-table [dataSource]="walkingDS" class="mat-elevation-z8">
+ 
+			<ng-container matColumnDef="transporte">
+				<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.transporte}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="transportador">
+				<mat-header-cell mat-header-cell *matHeaderCellDef> Transportador </mat-header-cell>
+				<mat-cell mat-cell *matCellDef="let element"> {{element.transportador}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="delivery">
+				<mat-header-cell *matHeaderCellDef> Delivery </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.delivery}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="reshipping">
+				<mat-header-cell *matHeaderCellDef> Reshipping </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.reshipping}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="packsend">
+				<mat-header-cell *matHeaderCellDef> Packsend </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.packsend}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="total">
+				<mat-header-cell *matHeaderCellDef> Total </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+			</ng-container>
+ 
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+	</div> 
+	
+</div>
+
+
+	
