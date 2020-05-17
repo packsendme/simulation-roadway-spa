@@ -1,6 +1,7 @@
 FROM node:12.7-alpine AS build
-WORKDIR /usr/src/app
-COPY package.json ./
+WORKDIR /app
+COPY package*.json /app/
 RUN npm install
-COPY . .
-RUN npm run build
+COPY ./ /app/
+ARG configuration=production
+RUN npm run build -- --output-path=./dist/out --configuration $configuration
