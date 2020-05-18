@@ -1,7 +1,8 @@
 FROM node:12.7-alpine AS build
-WORKDIR /app
-COPY package*.json /app/
-RUN npm install
-COPY ./ /app/
-ARG configuration=production
-RUN npm run build -- --output-path=./dist/out --configuration $configuration
+COPY . ./simulation-roadway-spa
+WORKDIR /simulation-roadway-spa
+RUN npm i
+RUN $(npm bin)/ng build --prod
+
+FROM nginx:1.15.8-alpine
+COPY --from=builder /simulation-roadway-spa/dist/simulation-roadway-spa/ /usr/share/nginx/html
