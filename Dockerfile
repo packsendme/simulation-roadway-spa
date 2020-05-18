@@ -1,10 +1,13 @@
-### STAGE 1: Build ###
 FROM node:12.7-alpine AS build
-WORKDIR /usr/src/app
-COPY package.json ./
+RUN mkdir -p /src/app/
+WORKDIR /src/app
+ENV PATH /src/app/node_modules/.bin:$PATH
+COPY package.json /src/app/
 RUN npm install
-COPY . .
+COPY . /src/app
 RUN npm run build
-### STAGE 2: Run ###
-FROM nginx:1.17.1-alpine
-COPY --from=build /usr/src/app/dist/simulation-roadway-spa /usr/share/nginx/html
+
+FROM nginx:1.15.8-alpine
+COPY --from=build /src/app/build  /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
