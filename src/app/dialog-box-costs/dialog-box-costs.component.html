@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Regras de Custos :: <strong>{{local_data.transport}}</strong></h1>
+<div mat-dialog-content>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Valor$ Distancia/KM </mat-label>
+      <input placeholder="{{action}} Valor/Distancia Percorrida Por KM" matInput [(ngModel)]="local_data.distance">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Valor$ Peso/GR  </mat-label>
+      <input placeholder="{{action}} Valor/Peso Por Grama" matInput [(ngModel)]="local_data.weight">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Valor$ Trabalho/Hora</mat-label>
+      <input placeholder="{{action}} Valor/Trabalho Por Hora" matInput [(ngModel)]="local_data.workTime">
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Consumo Combustivel/Litro</mat-label>
+      <input placeholder="{{action}} Consumo por Litro" matInput [(ngModel)]="local_data.averageConsumption">
+    </mat-form-field>
+
+</div>
+<br>
+<div mat-dialog-actions align="center">
+  <button mat-button (click)="doAction()" mat-flat-button color="accent">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

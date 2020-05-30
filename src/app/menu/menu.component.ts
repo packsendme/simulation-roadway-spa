@@ -14,8 +14,7 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goSimulationRoadway(){
-      this.router.navigate(['roadway']);
+  goRoadway(menu: string){
+      this.router.navigate([menu]);
   }
-
 }

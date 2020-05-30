@@ -32,14 +32,13 @@
      <li class="nav-item">
         <a class="nav-link collapsed" href="#" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Terreste</span>
+          <span>Roadway</span>
         </a>
         <div id="collapseTwo" class="collapse" [ngbCollapse]="isCollapsed">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Regiao Simulacao:</h6>
-            <a class="collapse-item" (click)="goSimulationRoadway()">America do Sul</a>
-            <a class="collapse-item" href="cards.html">Europa</a>
-            <a class="collapse-item" href="cards.html">America Central</a>
+            <h6 class="collapse-header">Menu:</h6>
+           <a class="collapse-item" (click)="goRoadway('roadway-simulation')">Simulacao</a>
+           <a class="collapse-item" (click)="goRoadway('roadway-parameter')">Parametros</a>
           </div>
         </div>
       </li>
@@ -48,14 +47,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Aereo</span>
+          <span>Flyway</span>
         </a>
         <div id="collapseUtilities" class="collapse" [ngbCollapse]="isCollapsed">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Regiao Simulacao:</h6>
-            <a class="collapse-item" href="buttons.html">America do Sul</a>
-            <a class="collapse-item" href="cards.html">Europa</a>
-            <a class="collapse-item" href="cards.html">America Central</a>
+            <h6 class="collapse-header">Menu:</h6>
+            <a class="collapse-item" (click)="goRoadway('roadway-simulation')">Simulacao</a>
+            <a class="collapse-item" (click)="goRoadway('roadway-parameter')">Parametros</a>
           </div>
         </div>
       </li>
@@ -65,14 +63,13 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Maritimo</span>
+          <span>Maritimeway</span>
         </a>
         <div id="collapseUtilities" class="collapse" [ngbCollapse]="isCollapsed">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Regiao Simulacao:</h6>
-            <a class="collapse-item" href="buttons.html">America do Sul</a>
-            <a class="collapse-item" href="cards.html">Europa</a>
-            <a class="collapse-item" href="cards.html">America Central</a>
+            <h6 class="collapse-header">Menu:</h6>
+            <a class="collapse-item" (click)="goRoadway('roadway-simulation')">Simulacao</a>
+            <a class="collapse-item" (click)="goRoadway('roadway-parameter')">Parametros</a>
           </div>
         </div>
       </li>

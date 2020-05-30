@@ -30,9 +30,9 @@
 							<mat-form-field class="unidade-medida-input">
 								<mat-label>Unidade Medida</mat-label>
 								<mat-select name="measurement" [(ngModel)]="unity_measurement" required>
-									<mat-option value="GR">Grama/Gr</mat-option>
-									<mat-option value="KG">Kilograma/KG</mat-option>
-									<mat-option value="T">Tonelada/T</mat-option>
+									<mat-option value="gr">Grama/Gr</mat-option>
+									<mat-option value="kg">Kilograma/KG</mat-option>
+									<mat-option value="t">Tonelada/T</mat-option>
 								</mat-select>
 							</mat-form-field>
 						</div>
@@ -49,13 +49,19 @@
 							</mat-select>    				
 						</mat-form-field>
 
-						<button type="submit" class="btn btn-cadastro btn-lg">Simular Terrestre</button>
+						<section>
+							<button type="submit" class="btn btn-cadastro btn-lg">Simular Custos</button>
+							<mat-spinner *ngIf="showSpinner" diameter="30"></mat-spinner>
+						</section>
+
 					</form>
 				</div>
 		</div>
 	</div>
 
 	<div class="result-simulation">
+
+
 		<mat-grid-list cols="2" rowHeight="6:4">
   			<mat-grid-tile>
       			<img class="tile-image" src="../../assets/img/icon-car.png">

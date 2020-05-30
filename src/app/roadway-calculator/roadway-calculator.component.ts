@@ -10,15 +10,6 @@ interface Produto {
   viewValue: string;
 }
 
-// export interface PeriodicElement {
-//   transporte: string;
-//   transportador: string;
-//   delivery: string;
-//   reshipping: string;
-//   packsend: string;
-//   total: string;
-// }
-
 export interface PeriodicElement {
   transportador: string;
   delivery: string;
@@ -58,7 +49,7 @@ export class RoadwayCalculatorComponent {
   walkingDS  = [];
   
   displayedColumns: string[] = ['transportador', 'delivery', 'reshipping', 'packsend', 'total'];
- 
+  showSpinner = false;
 
     produtos: Produto[] = [
         {value: 'Acampamento', viewValue: 'Acampamento'},
@@ -93,6 +84,8 @@ export class RoadwayCalculatorComponent {
   }
 
   findSimulationRoadway(form: NgForm){
+    this.cleanData();
+    this.loadData();
     console.log(this.unity_measurement);
     this.simulation.unity_measurement_weight = this.unity_measurement;
     this.simulation.type_product = this.selected_typeproduct;
@@ -102,6 +95,8 @@ export class RoadwayCalculatorComponent {
       
       var resSTR1 = JSON.stringify(roadwayResponse.body);
       var roadway = {} as Roadway;
+
+      console.log(" TESTE.....", resSTR1);
 
       var obj = JSON.parse(resSTR1, function (key, value) {
         if (key == "Car") {
@@ -129,7 +124,7 @@ export class RoadwayCalculatorComponent {
           return value;
         }
       });
- 
+      
       this.BICYCLE_DATA = [
         {transportador: roadway.Bicycle.vlr_employer_total,delivery: roadway.Bicycle.vlr_delivery_total,
       reshipping: roadway.Bicycle.vlr_reshipping, packsend:roadway.Bicycle.vlr_packsend_total, total:roadway.Bicycle.vlr_total}
@@ -159,6 +154,20 @@ export class RoadwayCalculatorComponent {
     });
   }
 
+  loadData() {
+    this.showSpinner = true;
+    setTimeout(() => {
+      this.showSpinner = false;
+    }, 2000);
+  }
+
+  cleanData(){
+      this.BICYCLE_DATA = null;
+      this.CAR_DATA = null;
+      this.MOTOCYCLE_DATA = null;
+      this.TRUCK_DATA = null;
+      this.WALKING_DATA = null;
+  }
 
   public getResultSimulation(){
     this.bicycleDS = this.BICYCLE_DATA;

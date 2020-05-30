@@ -1,0 +1,111 @@
+<div class="container">
+	<div class="get-ruleinstances">
+		<h2 class="text-center">Regras Instancia:</h2>
+		
+		<div class="row d-flex justify-content-center">
+
+			<table mat-table [dataSource]="instanceRuleDS" #mytable class="my-table mat-elevation-z5">
+				<ng-container matColumnDef="transporteinstance">
+					<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.provider}} </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="weight">
+					<mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="medidaW">
+					<mat-header-cell *matHeaderCellDef> - Max </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.unity_measurement_weight}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="Fk1">
+					<mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+					<mat-cell *matCellDef="let element"> </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="distance">
+					<mat-header-cell *matHeaderCellDef> Distance</mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.distance}} </mat-cell>
+				</ng-container>
+				<ng-container matColumnDef="distanceD">
+					<mat-header-cell *matHeaderCellDef> - Max </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.unity_measurement_distance}} </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="Fk2">
+					<mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+					<mat-cell *matCellDef="let element"> </mat-cell>
+				</ng-container>
+
+				<!-- Action Column -->
+				<ng-container matColumnDef="actionInstance">
+					<mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+					<mat-cell *matCellDef="let element" class="action-link">
+						<button mat-raised-button color="primary" (click)="openDialogInstanceRule('Update',element)">Edit</button> 
+					</mat-cell>
+				</ng-container>
+
+				<mat-header-row *matHeaderRowDef="instanceRuleColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: instanceRuleColumns;"></mat-row>
+			</table>
+			</div>
+		<h2 class="text-center">Regras Custos:</h2>
+
+		<div layout="row" layout-align="text-center" flex>
+			<mat-form-field class="mat-input-wrapper">
+				<mat-label>Pais</mat-label>
+				<mat-select name="country" [(ngModel)]="selected_country" required>
+					<mat-option *ngFor="let country of contries" [value]="country.value">
+						{{country.value}}
+					</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<button mat-button (click)="findCostsByCountry()" mat-flat-button color="accent">Obter Custos</button>
+		</div>
+
+		<mat-table [dataSource]="instanceCostsCountryDS" class="mat-elevation-z8">
+
+			<ng-container matColumnDef="transportecosts">
+				<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.transport}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="distancecosts">
+				<mat-header-cell *matHeaderCellDef> Distance/KM </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.distance}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="weightcosts">
+				<mat-header-cell *matHeaderCellDef> Weight/KG </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="workTime">
+				<mat-header-cell *matHeaderCellDef> Valor/Hora </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.workTime}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="averageConsumption">
+				<mat-header-cell *matHeaderCellDef> Consumo/Media </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.averageConsumption}} </mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="rateExchange">
+				<mat-header-cell *matHeaderCellDef> Exchange </mat-header-cell>
+				<mat-cell *matCellDef="let element"> {{element.rateExchange}} </mat-cell>
+			</ng-container>
+
+			<!-- Action Column -->
+				<ng-container matColumnDef="actionCosts">
+					<mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+					<mat-cell *matCellDef="let element" class="action-link">
+						<button mat-raised-button color="primary" (click)="openDialogInstanceCosts('Update',element)">Edit</button> 
+					</mat-cell>
+				</ng-container>
+
+			<mat-header-row *matHeaderRowDef="instanceCostsColumnsDisplay"></mat-header-row>
+  			<mat-row *matRowDef="let row; columns: instanceCostsColumnsDisplay;"></mat-row>
+		</mat-table>
+ 
+	</div>
+</div>

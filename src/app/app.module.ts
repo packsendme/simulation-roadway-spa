@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,13 +20,19 @@ import { ContentComponent } from './content/content.component';
 import { RoadwayCalculatorComponent } from './roadway-calculator/roadway-calculator.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { RoadwayParameterComponent } from './roadway-parameter/roadway-parameter.component';
+import { DialogBoxComponent } from './dialog-box/dialog-box.component';
+import { DialogBoxCostsComponent } from './dialog-box-costs/dialog-box-costs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ContentComponent,
-    RoadwayCalculatorComponent
+    RoadwayCalculatorComponent,
+    RoadwayParameterComponent,
+    DialogBoxComponent,
+    DialogBoxCostsComponent
   ],
   imports: [
     BrowserModule,
@@ -36,11 +44,16 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     MatTableModule,
     FormsModule,
     HttpClientModule,
+    MatDialogModule,
+    MatProgressSpinnerModule,
     NgbModule
+  ],
+  entryComponents: [
+    DialogBoxComponent
   ],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
-
 })
+
 export class AppModule { }

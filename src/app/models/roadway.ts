@@ -7,7 +7,4 @@ export interface Roadway {
 		Motorcycle: WalkingOrMotorcycleOrCarOrTruckOrBicycle;
 		Truck: WalkingOrMotorcycleOrCarOrTruckOrBicycle;
 		Walking: WalkingOrMotorcycleOrCarOrTruckOrBicycle;
-
- 
-
 }

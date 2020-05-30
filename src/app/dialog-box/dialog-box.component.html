@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Regras de Instancia :: <strong>{{local_data.provider}}</strong></h1>
+<div mat-dialog-content>
+    <br>
+    <mat-form-field>
+      <mat-label>Distancia Maxima (KM)</mat-label>
+      <input placeholder="{{action}} Distancia Maxima" matInput [(ngModel)]="local_data.distance">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Peso Maximo (Kg/T)</mat-label>
+      <input placeholder="{{action}} Peso Maximo" matInput [(ngModel)]="local_data.weight">
+    </mat-form-field>
+
+</div>
+<br>
+<div mat-dialog-actions align="center">
+  <button mat-button (click)="doAction()" mat-flat-button color="accent">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

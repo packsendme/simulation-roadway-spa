@@ -48,7 +48,7 @@ table {
 .tile-image {
   width:7%;
   height: auto;
-   background: #FFFFFF;
+  background: #FFFFFF;
 }
 
 .mat-input-wrapper{
@@ -75,11 +75,17 @@ table {
   outline: none;
   height: 0px;
 }
+
+.example-button-row {
+  display: table-cell;
+}
+
 .btn-cadastro {
   width: 50%;
   display: block;
   margin: 0 auto;
   padding: 10px;
-  background-color: #dcbc81;
-  font-weight: bold;
+  background-color: #D2691E;
+  font-weight: normal;
+  color: #F0F8FF;
 }
