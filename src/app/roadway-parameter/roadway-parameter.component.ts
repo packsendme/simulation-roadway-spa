@@ -1,17 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { RoadwayService } from '../services/roadway.service';
-import { Roadway } from '../models/roadway';
-import { map } from 'rxjs/operators';
 import { RoadwayBussineRule } from '../models/bre/roadwaybussinerule';
-import { RuleInstance } from '../models/bre/instance-rule/ruleInstance';
-import { RuleCosts } from '../models/bre/instance-costs/rulecosts';
-import { RuleParameters } from '../models/bre/instance-rule/ruleParameters';
 import { DialogBoxComponent } from '../dialog-box/dialog-box.component';
 import { DialogBoxCostsComponent } from '../dialog-box-costs/dialog-box-costs.component';
-import { Observable } from 'rxjs';
 
 export interface ruleInstance {
   provider: string;

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { RoadwayService } from '../services/roadway.service';
 import { SimulationModel } from '../models/simulation-model';
 import { Roadway } from '../models/roadway';
-import { map } from 'rxjs/operators';
 
 interface Produto {
   value: string;
