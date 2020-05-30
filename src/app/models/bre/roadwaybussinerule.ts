@@ -1,5 +1,5 @@
-import { RuleCosts } from './instance-costs/rulecosts';
 import { RuleInstance } from './instance-rule/ruleInstance';
+import { RuleCosts } from './instance-costs/ruleCosts';
 
 export interface RoadwayBussineRule {
     name_rule: string;

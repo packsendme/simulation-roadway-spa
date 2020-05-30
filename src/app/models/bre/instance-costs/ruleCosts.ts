@@ -1,4 +1,4 @@
-import { InstanceWay } from './instanceway';
+import { InstanceWay } from './instanceWay';
 
 export interface RuleCosts {
     Colombia: InstanceWay;
