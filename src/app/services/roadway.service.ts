@@ -68,7 +68,7 @@ export class RoadwayService {
     headers = headers.append('isoLanguageCode', 'pt');
     headers = headers.append('isoCountryCode', 'BR');
     headers = headers.append('isoCurrencyCode', 'BRL');
-    headers = headers.append('originApp', 'APP-MOBILE');
+    headers = headers.append('originApp', 'APP-MICROSERVICES');
     headers = headers.append('Access-Control-Allow-Origin', '*');
     headers = headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     headers = headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
