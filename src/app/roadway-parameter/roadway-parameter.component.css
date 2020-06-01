@@ -1,7 +1,7 @@
 .get-ruleinstances {
   position: absolute;
-  width: 1030px;
-  height: 585px;
+  width: 500px;
+  height: 275px;
   z-index: 15;
   top: 13%;
   left: 30%;
@@ -11,17 +11,43 @@
 
 .get-rulecosts{
   position: absolute;
-  width: 500px;
-  height: 585px;
+  width: 1030px;
+  height: 315px;
   z-index: 15;
-  top: 13%;
+  top: 58.2%;
   left: 59%;
-  margin: -70px 0 0 -20px;
+  margin: -70px 0 0 -520px;
   background: #FFFFE0;
 }
 
+.get-tollsFuel{
+  position: absolute;
+  width: 523px;
+  height: 145px;
+  z-index: 15;
+  top: 34.4%;
+  left: 59.0%;
+  margin: -70px 0 0 -20px;
+  background-color: #FFFFE0;
+}
+
+.get-country{
+  position: absolute;
+  width: 525px;
+  height: 130px;
+  z-index: 15;
+  top: 13%;
+  left: 58.9%;
+  margin: -70px 0 0 -20px;
+  background-color: #DCDCDC;
+}
+
 table {
-  width: 80%;
+  width: 85%;
+}
+
+.mat-header-row, .mat-row {
+  min-height: 25px;
 }
 
 
@@ -30,30 +56,41 @@ table {
 }
 
 .mat-column-distance {
-    flex: 0 0 10%;
+    flex: 0 0 15%;
     text-align: center;
     justify-content:center;
 }
 .mat-column-distanceD {
-    flex: 0 0  4%;
+    flex: 0 0  8%;
     text-align: center;
     justify-content:center;
 }
 
 .mat-column-weight {
-    flex: 0 0 10%;
+    flex: 0 0 15%;
     text-align: center;
     justify-content:center;
 }
 .mat-column-medidaW {
-    flex: 0 0 4%;
+    flex: 0 0 8%;
     text-align: center;
     justify-content:center;
 }
 
+.mat-column-Fk1 {
+    flex: 0 0 5%;
+    text-align: center;
+    justify-content:center;
+}
+
+.mat-column-Fk2 {
+    flex: 0 0 5%;
+    text-align: center;
+    justify-content:center;
+}
 
 .mat-column-actionInstance {
-    flex: 0 0 10%;
+    flex: 0 0 25%;
     text-align: center;
     justify-content:center;
 }
@@ -62,21 +99,23 @@ table {
 }
 
 
+/*Instance -Costs CSS */
+
 .mat-column-transportecosts{
-    flex: 0 0 18%;
+    flex: 0 0 20%;
 }
 .mat-column-weightcosts {
-    flex: 0 0 12%;
+    flex: 0 0 10%;
     text-align: center;
     justify-content:center;
 }
 .mat-column-distancecosts {
-    flex: 0 0 12%;
+    flex: 0 0 10%;
     text-align: center;
     justify-content:center;
 }
 .mat-column-workTime {
-    flex: 0 0 10%;
+    flex: 0 0 15%;
     text-align: center;
     justify-content:center;
 }
@@ -97,15 +136,40 @@ table {
     justify-content:center;
 }
 .mat-column-actionCosts {
-    flex: 0 0 10%;
+    flex: 0 0 20%;
     text-align: center;
     justify-content:center;
 }
 
-.mat-header-row, .mat-row {
-  min-height: 30px;
+.table-mat-costs{
+    width: 80%;
 }
 
+/*TollsFuel CSS */
+.mat-column-tollsPrice {
+    flex: 0 0  25%;
+    text-align: center;
+    justify-content:center;
+}
+.mat-column-fuelGasolinePrice {
+    flex: 0 0  30%;
+    text-align: center;
+    justify-content:center;
+}
+.mat-column-fuelDieselPrice {
+    flex: 0 0  25%;
+    text-align: center;
+    justify-content:center;
+}
+.mat-column-actionTollsFuel {
+    flex: 0 0  25%;
+    text-align: center;
+    justify-content:center;
+}
+
+.table-mat-fuel{
+    width: 70%;
+}
 
 
 mat-header-cell {

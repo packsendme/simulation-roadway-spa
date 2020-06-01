@@ -1,7 +1,7 @@
 import { Component, Inject, Optional, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NgForm } from '@angular/forms';
-import { RoadwayBussineRule } from '../models/bre/roadwaybussinerule';
+import { RoadwayBussineRule } from '../models/bre/roadway/roadwaybussinerule';
 import { RoadwayService } from '../services/roadway.service';
 
  export interface ruleCosts {

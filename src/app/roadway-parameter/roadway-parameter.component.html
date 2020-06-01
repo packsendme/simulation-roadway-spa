@@ -1,10 +1,11 @@
 <div class="container">
 	<div class="get-ruleinstances">
-		<h2 class="text-center">Regras Instancia:</h2>
+		<h2 class="text-center">Regras Instancia Transporte:</h2>
 		
 		<div class="row d-flex justify-content-center">
 
-			<table mat-table [dataSource]="instanceRuleDS" #mytable class="my-table mat-elevation-z5">
+			<table mat-table [dataSource]="instanceRuleDS" #mytable class="lessons-table mat-elevation-z8">
+				
 				<ng-container matColumnDef="transporteinstance">
 					<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
 					<mat-cell *matCellDef="let element"> {{element.provider}} </mat-cell>
@@ -48,8 +49,11 @@
 				<mat-header-row *matHeaderRowDef="instanceRuleColumns"></mat-header-row>
 				<mat-row *matRowDef="let row; columns: instanceRuleColumns;"></mat-row>
 			</table>
-			</div>
-		<h2 class="text-center">Regras Custos:</h2>
+		</div>
+	</div>
+
+	<div class="get-country">
+		<h2 class="text-center">Paises - America do Sul:</h2>
 
 		<div layout="row" layout-align="text-center" flex>
 			<mat-form-field class="mat-input-wrapper">
@@ -62,50 +66,94 @@
 			</mat-form-field>
 			<button mat-button (click)="findCostsByCountry()" mat-flat-button color="accent">Obter Custos</button>
 		</div>
+	</div>
 
-		<mat-table [dataSource]="instanceCostsCountryDS" class="mat-elevation-z8">
 
-			<ng-container matColumnDef="transportecosts">
-				<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
-				<mat-cell *matCellDef="let element"> {{element.transport}} </mat-cell>
-			</ng-container>
+	<div class="get-rulecosts">
+	
+		<h2 class="text-center">Regras Custos Transporte Por Pais:</h2>
+		<div class="row d-flex justify-content-center">
 
-			<ng-container matColumnDef="distancecosts">
-				<mat-header-cell *matHeaderCellDef> Distance/KM </mat-header-cell>
-				<mat-cell *matCellDef="let element"> {{element.distance}} </mat-cell>
-			</ng-container>
+			<mat-table [dataSource]="instanceCostsCountryDS" class="table-mat-costs">
 
-			<ng-container matColumnDef="weightcosts">
-				<mat-header-cell *matHeaderCellDef> Weight/KG </mat-header-cell>
-				<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-			</ng-container>
+				<ng-container matColumnDef="transportecosts">
+					<mat-header-cell *matHeaderCellDef> Transporte </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.transport}} </mat-cell>
+				</ng-container>
 
-			<ng-container matColumnDef="workTime">
-				<mat-header-cell *matHeaderCellDef> Valor/Hora </mat-header-cell>
-				<mat-cell *matCellDef="let element"> {{element.workTime}} </mat-cell>
-			</ng-container>
 
-			<ng-container matColumnDef="averageConsumption">
-				<mat-header-cell *matHeaderCellDef> Consumo/Media </mat-header-cell>
-				<mat-cell *matCellDef="let element"> {{element.averageConsumption}} </mat-cell>
-			</ng-container>
+				<ng-container matColumnDef="distancecosts">
+					<mat-header-cell *matHeaderCellDef> Distancia/KM </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}}  {{element.distance}} </mat-cell>
+				</ng-container>
 
-			<ng-container matColumnDef="rateExchange">
-				<mat-header-cell *matHeaderCellDef> Exchange </mat-header-cell>
-				<mat-cell *matCellDef="let element"> {{element.rateExchange}} </mat-cell>
-			</ng-container>
+				<ng-container matColumnDef="weightcosts">
+					<mat-header-cell *matHeaderCellDef> Peso/Gr </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}}  {{element.weight}} </mat-cell>
+				</ng-container>
 
-			<!-- Action Column -->
-				<ng-container matColumnDef="actionCosts">
+				<ng-container matColumnDef="workTime">
+					<mat-header-cell *matHeaderCellDef> Trabalho/Hora </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}}  {{element.workTime}} </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="averageConsumption">
+					<mat-header-cell *matHeaderCellDef> Consumo </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.averageConsumption}}<span>/L</span> </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="rateExchange">
+					<mat-header-cell *matHeaderCellDef> Exchange </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}} {{element.rateExchange}} </mat-cell>
+				</ng-container>
+
+				<!-- Action Column -->
+					<ng-container matColumnDef="actionCosts">
+						<mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+						<mat-cell *matCellDef="let element" class="action-link">
+							<button mat-raised-button color="primary" (click)="openDialogInstanceCosts('Update',element)">Edit</button> 
+						</mat-cell>
+					</ng-container>
+
+				<mat-header-row *matHeaderRowDef="instanceCostsColumnsDisplay"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: instanceCostsColumnsDisplay;"></mat-row>
+			</mat-table>
+		</div>
+	 </div>
+	 
+	<div class="get-tollsFuel">
+		<h2 class="text-center">Regras Custo Operacional:</h2>
+		<div class="row d-flex justify-content-center">
+
+			<mat-table  [dataSource]="instanceTollsFuelDS" class="table-mat-fuel">
+
+				<ng-container matColumnDef="tollsPrice">
+					<mat-header-cell *matHeaderCellDef> Pedagio </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}} {{element.tollsPrice}} </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="fuelGasolinePrice">
+					<mat-header-cell *matHeaderCellDef> Gasolina/Etanol  </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}} {{element.fuelGasolinePrice}} </mat-cell>
+				</ng-container>
+
+				<ng-container matColumnDef="fuelDieselPrice">
+					<mat-header-cell *matHeaderCellDef> Diesel  </mat-header-cell>
+					<mat-cell *matCellDef="let element"> {{element.currentExchange}} {{element.fuelDieselPrice}} </mat-cell>
+				</ng-container>
+
+				
+				<!-- Action Column -->
+				<ng-container matColumnDef="actionTollsFuel">
 					<mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
 					<mat-cell *matCellDef="let element" class="action-link">
-						<button mat-raised-button color="primary" (click)="openDialogInstanceCosts('Update',element)">Edit</button> 
+						<button mat-raised-button color="primary" (click)="openDialogTollsFuelCosts('Update',element)">Edit</button> 
 					</mat-cell>
 				</ng-container>
 
-			<mat-header-row *matHeaderRowDef="instanceCostsColumnsDisplay"></mat-header-row>
-  			<mat-row *matRowDef="let row; columns: instanceCostsColumnsDisplay;"></mat-row>
-		</mat-table>
- 
+				<mat-header-row *matHeaderRowDef="instanceTollsFuelColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: instanceTollsFuelColumns;"></mat-row>
+			</mat-table>
+		</div>
 	</div>
 </div>

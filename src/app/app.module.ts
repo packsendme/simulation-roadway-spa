@@ -23,6 +23,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { RoadwayParameterComponent } from './roadway-parameter/roadway-parameter.component';
 import { DialogBoxComponent } from './dialog-box/dialog-box.component';
 import { DialogBoxCostsComponent } from './dialog-box-costs/dialog-box-costs.component';
+import { DialogBoxTollsfuelComponent } from './dialog-box-tollsfuel/dialog-box-tollsfuel.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DialogBoxCostsComponent } from './dialog-box-costs/dialog-box-costs.com
     RoadwayCalculatorComponent,
     RoadwayParameterComponent,
     DialogBoxComponent,
-    DialogBoxCostsComponent
+    DialogBoxCostsComponent,
+    DialogBoxTollsfuelComponent
   ],
   imports: [
     BrowserModule,

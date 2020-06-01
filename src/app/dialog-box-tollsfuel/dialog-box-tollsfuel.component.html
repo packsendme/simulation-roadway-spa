@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>Regras de Custos :: <strong>{{local_data.country}}</strong></h1>
+<div mat-dialog-content>
+    <br>
+    <mat-form-field>
+      <mat-label>Pedagio R$</mat-label>
+      <input placeholder="{{action}} Pedagio" matInput [(ngModel)]="local_data.tollsPrice" required>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Gasolina/Etanol R$</mat-label>
+      <input placeholder="{{action}} Combustivel Gasolina" matInput [(ngModel)]="local_data.fuelGasolinePrice" required>
+    </mat-form-field>
+    
+    <mat-form-field>
+      <mat-label>Diesel R$</mat-label>
+      <input placeholder="{{action}} Combustivel Diesel" matInput [(ngModel)]="local_data.fuelDieselPrice" required>
+    </mat-form-field>
+    
+</div>
+<br>
+<div mat-dialog-actions align="center">
+  <button mat-button (click)="doAction()" mat-flat-button color="accent">{{action}}</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
